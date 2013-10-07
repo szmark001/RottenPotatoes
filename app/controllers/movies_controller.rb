@@ -16,13 +16,12 @@ class MoviesController < ApplicationController
         end
         flash.keep
         redirect_to(:action => :index, :sort_by => session[:sort_by], :ratings => session[:ratings])
+      else
+        redirect_to(:action => :index, :sort_by => session[:sort_by], :ratings => session[:ratings])
       end
     elsif (!params[:sort_by].nil? && params[:ratings].nil?)
       flash.keep
       redirect_to(:action => :index, :sort_by => params[:sort_by], :ratings => session[:ratings])
-    end
-    if params[:sort_by].nil? && params[:ratings].nil? && !params[:commit].nil?
-    redirect_to(:action => :index, :sort_by => session[:sort_by], :ratings => session[:ratings])
     end
 
     if !params[:sort_by].nil?
